@@ -10,7 +10,7 @@ html, body {
 }
 
 #map {
-    height: 72%;
+    height:500px; 
 }
 
 .control {

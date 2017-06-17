@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="outForService">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
@@ -9,11 +9,14 @@
     <title>Out For Service</title>
   </head>
   <body>
+    <div ng-controller="MapController">
       <div class="notification w3-blue">
         <h2 id="notification-title">Notification</h2>
         <div id="notification-body"></div>
       </div>
+      
       <div id="map"></div>
+    
       <div class="control w3-center">
         <div class="w3-bar">
           <button id="refresh" class="w3-bar-item w3-button w3-black">Refresh</button>
@@ -21,5 +24,7 @@
           <button class="w3-bar-item w3-button w3-red">Button</button>
         </div>
       </div>
+   </div>
+
   </body>
 </html>

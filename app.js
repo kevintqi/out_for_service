@@ -1,46 +1,51 @@
-$(document).ready(function() {
-    initMap();
-    updateObjects();
-    setInterval(updateObjects, 300*1000);
-    addRefreshButton();
+var outForServiceApp = angular.module('outForService', []);
+outForServiceApp.controller('MapController', function($scope) {
+    initMap($scope);
+    updateObjects($scope);
+    setInterval(function(){updateObjects($scope)}, 30*1000);
+    addRefreshButton($scope);
 });
 
-var localMap;
 var markers = [];
 
-function initMap() {
+function initMap($scope) {
     var options = {
         center: new google.maps.LatLng(34.1022, -118.2737),
         zoom: 13,
+        minZoom: 13,
         disableDefaultUI: false
     };
-    localMap = new google.maps.Map(
+    $scope.map = new google.maps.Map(
         document.getElementById("map"), options
     );
-    var places = new google.maps.places.PlacesService(localMap);  
+    new google.maps.places.PlacesService($scope.map);
+    $scope.markers = [];
 }
 
-function updateObjects() {
+function updateObjects($scope) {
     $.getJSON("model/objects.json", function(data, status){
         if (status === "success") {
-            localMap.setCenter(data.center);
-            updateMarkers(data.objects);
+            updateMarkers($scope, data.objects);
         }
     }); 
 }
 
-function updateMarkers(objects) {
-    while (markers.length !== 0) {
-        var marker = markers.pop();
+function updateMarkers($scope, objects) {
+    while ($scope.markers.length !== 0) {
+        var marker = $scope.markers.pop();
         marker.setMap(null);
+        marker = null;
     }
+    var latlngbounds = new google.maps.LatLngBounds();
     for (var i = 0; i < objects.length; ++i) {
-        var marker = createMarker(objects[i]);
-        markers.push(marker);
+        marker = createMarker($scope, objects[i]);
+        latlngbounds.extend(marker.position);
+        $scope.markers.push(marker);
     }
+    $scope.map.fitBounds(latlngbounds);
 }
 
-function createMarker(obj) {
+function createMarker($scope, obj) {
     var contentString = '<div style="background-color:' + obj.status +'">'
                                 + obj.name + '<br>' 
                                 + obj.destination + '<br>' +
@@ -54,14 +59,14 @@ function createMarker(obj) {
         position: obj.position,
         icon: obj.icon,
         title: obj.name,
-        map: localMap
+        map: $scope.map
     });
     marker.addListener('click', function() {
-        infowindow.open(localMap, marker);
+        infowindow.open($scope.map, marker);
     });
     return marker;
 }
 
-function addRefreshButton() {
-    $('#refresh').click(updateObjects);
+function addRefreshButton($scope) {
+    $('#refresh').click(function(){updateObjects($scope);});
 }
