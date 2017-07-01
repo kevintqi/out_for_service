@@ -1,7 +1,11 @@
 {
-	"center": {
-		"lat": 34.1022,
-		"lng": -118.2737
+	"company": {
+		"name": "Cloud 9",
+		"logo": "images/logo.jpg",
+		"location": {
+			"lat": 34.1022,
+			"lng": -118.2737
+		}
 	},
 	"objects": [{
 		"uid": 1,

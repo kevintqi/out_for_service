@@ -5,8 +5,15 @@ html, body {
     font-family: calibri, arial;
 }
 
+.menu li {
+    display:inline;
+}
 .notification {
     height: 22%;
+}
+
+.divider {
+    min-width:30px;
 }
 
 #map {

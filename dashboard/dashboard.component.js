@@ -1,19 +1,21 @@
 angular.module('dashboard', []);
 angular.module('dashboard').component('dashboard', {
     templateUrl:'dashboard/dashboard.template.html',
-    controller: function DashboardController($http) {
+    controller: ['$http', '$filter', function DashboardController($http, $filter) {
         var self = this;
         $http.get('model/objects.json').then(function(response) {
             self.objects = response.data.objects;
+            self.company = response.data.company;
+            self.filteredObjects = self.objects;
             updateMarkers(self);
         });
-        initMap(self);
-        addRefreshButton(self);
+        initMap(self, $filter);
+        self.refresh = function refresh() {updateObjects(self);}; 
         setInterval(function(){updateObjects(self)}, 300*1000);
-    }
+    }]
 });
 
-function initMap(self) {
+function initMap(self, $filter) {
     var options = {
         center: new google.maps.LatLng(34.1022, -118.2737),
         zoom: 13,
@@ -25,12 +27,18 @@ function initMap(self) {
     );
     new google.maps.places.PlacesService(self.map);
     self.markers = [];
+    self.onSearch = function onSearch() {
+        self.filteredObjects = $filter('filter')(self.objects, self.query);
+        updateMarkers(self);
+    };
 }
 
 function updateObjects(self) {
     $.getJSON("model/objects.json", function(data, status){
         if (status === "success") {
             self.objects = data.objects;
+            self.filteredObjects = self.objects;
+            self.query = null;
             updateMarkers(self);
         }
     }); 
@@ -43,8 +51,8 @@ function updateMarkers(self) {
         marker = null;
     }
     var latlngbounds = new google.maps.LatLngBounds();
-    for (var i = 0; i < self.objects.length; ++i) {
-        marker = createMarker(self, self.objects[i]);
+    for (var i = 0; i < self.filteredObjects.length; ++i) {
+        marker = createMarker(self, self.filteredObjects[i]);
         latlngbounds.extend(marker.position);
         self.markers.push(marker);
     }
@@ -71,8 +79,4 @@ function createMarker(self, obj) {
         infowindow.open(self.map, marker);
     });
     return marker;
-}
-
-function addRefreshButton(self) {
-    $('#refresh').click(function(){updateObjects(self);});
 }

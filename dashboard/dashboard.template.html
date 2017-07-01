@@ -1,41 +1,34 @@
 <div>
-  <div class="notification w3-blue">
-    <h2 id="notification-title">Status Dashboard</h2>
+  <div class="control w3-blue">
+    <ul class="menu w3-ul">
+        <li>
+        <img ng-src="{{$ctrl.company.logo}}" style="width:72px"/> {{$ctrl.company.name}}
+        </li>
+        <li>
+          <input ng-model="$ctrl.query" ng-keyup="$ctrl.onSearch()" class="w3-round" placeholder="Search"/> 
+          <i class="material-icons"> search </i>
+        </li>
+        <li class="divider"> </li>
+        <li classs= "w3-bar">
+            <button id="refresh" class="w3-bar-item w3-button w3-black" ng-click="$ctrl.refresh()">Refresh</button>
+            <button class="w3-bar-item w3-button w3-teal">Button</button>
+            <button class="w3-bar-item w3-button w3-red">Button</button>
+        </li>
+    </ul>
+  </div>
+
+  <div id="map"></div>
+
+  <div class="notification">
     <div id="notification-body">
-      <table>
-        <tr>
-          <td>
-            <select ng-model="$ctrl.orderProp">
-        		    <option value="name">Name</option>
-        		    <option value="destination">Address</option>
-        	      </select>
-          </td>
-          <td class="address">
-          </td>
-          <td>
-            <i class="material-icons"> search <input ng-model="$ctrl.query" class="w3-round"/> </i>
-          </td>
-        </tr>
-      </table>
       <table class="w3-table w3-text-black">
         <tr ng-repeat="obj in $ctrl.objects | filter:$ctrl.query | orderBy:$ctrl.orderProp" style="background-color: {{obj.status}}">
           <td>
-            <img src="{{obj.icon}}" /> <br> {{obj.name}}
+            <img ng-src="{{obj.icon}}" /> <br/> {{obj.name}}
           </td>
           <td>{{obj.destination}}</td>
         </tr>
       </table>
     </div>
   </div>
-
-  <div id="map"></div>
-
-  <div class="control w3-center">
-    <div class="w3-bar">
-      <button id="refresh" class="w3-bar-item w3-button w3-black">Refresh</button>
-      <button class="w3-bar-item w3-button w3-teal">Button</button>
-      <button class="w3-bar-item w3-button w3-red">Button</button>
-    </div>
-  </div>
 </div>
- 
