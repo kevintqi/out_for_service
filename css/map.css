@@ -5,19 +5,17 @@ html, body {
     font-family: calibri, arial;
 }
 
-.menu li {
-    display:inline;
-}
-.notification {
-    height: 22%;
+.dashboard img {
+    height:46px;
 }
 
-.divider {
-    min-width:30px;
+.dashboard input {
+    width:100%;
+    height:46px;
 }
 
 #map {
-    min-height:500px;
+    min-height:550px;
     height:72%;
 }
 

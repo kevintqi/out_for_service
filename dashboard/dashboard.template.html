@@ -1,34 +1,38 @@
-<div>
-  <div class="control w3-blue">
-    <ul class="menu w3-ul">
-        <li>
-        <img ng-src="{{$ctrl.company.logo}}" style="width:72px"/> {{$ctrl.company.name}}
-        </li>
-        <li>
-          <input ng-model="$ctrl.query" ng-keyup="$ctrl.onSearch()" class="w3-round" placeholder="Search"/> 
+<div class="dashboard">
+  <div class="w3-row w3-white w3-padding">
+    <div class="w3-quarter">
+      <div class="w3-bar">
+        <div class="w3-bar-item">
+          <img ng-src="{{$ctrl.company.logo}}" />
+        </div>
+      </div>
+    </div>
+    <div class="w3-half">
+      <input type="text" ng-model="$ctrl.query" ng-keyup="$ctrl.onSearch()" class="w3-button w3-border-0 w3-yellow w3-padding" />
+    </div>
+    <div class="w3-quarter">
+      <div class="w3-bar">
+        <div class="w3-bar-item w3-button w3-left">
           <i class="material-icons"> search </i>
-        </li>
-        <li class="divider"> </li>
-        <li classs= "w3-bar">
-            <button id="refresh" class="w3-bar-item w3-button w3-black" ng-click="$ctrl.refresh()">Refresh</button>
-            <button class="w3-bar-item w3-button w3-teal">Button</button>
-            <button class="w3-bar-item w3-button w3-red">Button</button>
-        </li>
-    </ul>
+        </div>
+        <div class="w3-bar-item w3-right">
+          <img ng-src="{{$ctrl.company.manager.icon}}" class="w3-circle" />
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <div id="map"></div>
 
-  <div class="notification">
-    <div id="notification-body">
-      <table class="w3-table w3-text-black">
-        <tr ng-repeat="obj in $ctrl.objects | filter:$ctrl.query | orderBy:$ctrl.orderProp" style="background-color: {{obj.status}}">
-          <td>
-            <img ng-src="{{obj.icon}}" /> <br/> {{obj.name}}
-          </td>
-          <td>{{obj.destination}}</td>
-        </tr>
-      </table>
+  <div class="w3-center">
+    <div class="w3-bar ">
+      <button class="w3-bar-item w3-teal" ng-click="$ctrl.refresh()">
+        <i class="material-icons"> center_focus_strong </i>
+      </button>
+      <button class="w3-bar-item w3-red" ng-click="$ctrl.toggleMarkerType()">
+        <i class="material-icons"> person_pin</i>
+      </button>
     </div>
   </div>
 </div>
