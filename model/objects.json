@@ -11,6 +11,10 @@
 			"icon": "images/manager.jpg"
 		}
 	},
+	"messages": {
+		"not_assigned" : "New Task",
+		"no_match": "No match for"
+	},
 	"objects": [{
 		"assignee": {
 			"name": "Joe",
@@ -25,13 +29,15 @@
 			"lng": -118.2436,
 			"address": "17985 Pacific Coast Hwy, Pacific Palisades, CA 90272"
 		},
-		"status": "blocked",
+		"status": "Blocked",
 		"statusIcon": "images/block.png",
 		"targetTime": {
+			"label": "Schedule",
 			"start": "7:00a",
 			"end": "9:00a"
 		},
 		"actualTime": {
+			"label": "Actual",
 			"start": "7:00a"
 		}
 	},{
@@ -48,9 +54,10 @@
 			"lng": -118.2239,
 			"address": "111 S Grand Ave, Los Angeles, CA 90012"
 		},
-		"status": "starting",
+		"status": "Starting",
 		"statusIcon": "images/progress_1.png",
 		"targetTime": {
+			"label": "Schedule",
 			"start": "7:00a",
 			"end": "9:00a"
 		}
@@ -68,13 +75,15 @@
 			"lng": -118.25436,
 			"address": "City Hall"
 		},
-		"status": "done",
+		"status": "Done",
 		"statusIcon": "images/check.png",
 		"targetTime": {
+			"label": "Schedule",
 			"start": "7:00a",
 			"end": "9:00a"
 		},
 		"actualTime": {
+			"label": "Actual",
 			"start": "7:05a",
 			"end": "9:10a"
 		}
@@ -83,11 +92,11 @@
 			"lat": 34.1313,
 			"lng": -118.24336,
 			"address": "Central Market"
-
 		},
-		"status": "new",
+		"status": "New",
 		"statusIcon": "images/progress_0.png",
 		"targetTime": {
+			"label": "Schedule",
 			"start": "7:00a",
 			"end": "9:00a"
 		}

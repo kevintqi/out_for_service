@@ -6,6 +6,7 @@ angular.module('dashboard').component('dashboard', {
         $http.get('model/objects.json').then(function(response) {
             self.objects = response.data.objects;
             self.company = response.data.company;
+            self.messages = response.data.messages;
             self.filteredObjects = self.objects;
             updateMarkers(self);
         });
@@ -34,7 +35,6 @@ function initMap(self, $filter) {
     self.map = new google.maps.Map(
         document.getElementById("map"), options
     );
-    new google.maps.places.PlacesService(self.map);
     self.statusMarker = true;
     self.markers = [];
     self.onSearch = function onSearch() {
@@ -42,7 +42,7 @@ function initMap(self, $filter) {
         if (self.filteredObjects.length > 0) {
             updateMarkers(self);
         } else {
-            alert("No match for '" + self.query + "'");
+            alert(self.messages.no_match + " '" + self.query + "'");
         }
     };
     self.map.addListener('click', function() {
@@ -86,7 +86,7 @@ function updateMarkers(self) {
 function createStatusMarker(self, obj) {
     var markerInfo = {};
     markerInfo.infoWindow = new google.maps.InfoWindow({
-        content: buildInfoContent(obj)
+        content: buildInfoContent(self, obj)
     });
     markerInfo.marker = new google.maps.Marker({
         position: obj.location,
@@ -109,7 +109,7 @@ function createAssigneeMarker(self, obj) {
     }
     var markerInfo = {};
     markerInfo.infoWindow = new google.maps.InfoWindow({
-        content: buildInfoContent(obj)
+        content: buildInfoContent(self, obj)
     });
     markerInfo.marker = new google.maps.Marker({
         position: obj.assignee.position,
@@ -126,23 +126,25 @@ function createAssigneeMarker(self, obj) {
     return markerInfo;
 }
 
-function buildInfoContent(obj) {
+function buildInfoContent(self, obj) {
     var contentString = '<div class="w3-bar">';
     var assignee = '<div class="w3-bar-item w3-quarter w3-left w3-border-right">';
     if (obj.assignee) {
        assignee += '<img src=' + obj.assignee.icon + '/>' + '<br/>' + obj.assignee.name;
     } else {
-        assignee += '<span class="w3-red"> New Task </span>';
+        assignee += '<span class="w3-red">' + self.messages.not_assigned + '</span>';
     }
     assignee +=  '</div>';
     var details = '<div class="w3-bar-item w3-half"> <ul class="w3-ul w3-tiny">';
     var location ='<li class="w3-padding-small"><strong>' + obj.location.address + '</strong></li>';
     details += location;
-    var schedule = '<li class="w3-border-0 w3-padding-small"> <span class="w3-tag w3-teal w3-round"> Schedule </span>' + 
+    var schedule = '<li class="w3-border-0 w3-padding-small"> <span class="w3-tag w3-teal w3-round">' +
+                   obj.targetTime.label + '</span>' + 
                    obj.targetTime.start + ' - ' + obj.targetTime.end + '</li>';
     details += schedule;
     if (obj.actualTime) {
-        var actual = '<li class="w3-border-0 w3-padding-small"> <span class="w3-tag w3-teal w3-round">Actual </span>' + 
+        var actual = '<li class="w3-border-0 w3-padding-small"> <span class="w3-tag w3-teal w3-round">' +
+                   obj.actualTime.label + '</span>' + 
                    obj.actualTime.start + ' - ' + obj.actualTime.end + '</li>';
         details += actual;          
     }
