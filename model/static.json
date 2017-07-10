@@ -1,0 +1,20 @@
+{
+	"company": {
+		"name": "Cloud 8",
+		"logo": "images/logo.png",
+		"location": {
+			"lat": 34.1022,
+			"lng": -118.2737,
+			"zoom": 13,
+			"minZoom" : 13
+		},
+		"manager": {
+			"name": "Hugo",
+			"icon": "images/manager.jpg"
+		}
+	},
+	"messages": {
+		"not_assigned" : "New Task",
+		"no_match": "No match for"
+	}
+}
