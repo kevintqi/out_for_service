@@ -70,7 +70,7 @@ dashboardModule.factory('mapView', function() {
                 var contentString = '<div class="w3-bar">';
                 var assignee = '<div class="w3-bar-item w3-quarter w3-left w3-border-right">';
                 if (obj.assignee) {
-                    assignee += '<img src=' + obj.assignee.icon + '/>' + '<br/>' + obj.assignee.name;
+                    assignee += '<img src="' + obj.assignee.icon + '"/>' + '<br/>' + obj.assignee.name;
                 }
                 else {
                     assignee += '<span class="w3-red">' + messages.not_assigned + '</span>';
@@ -91,7 +91,7 @@ dashboardModule.factory('mapView', function() {
                 }
                 details += '</ul></div>';
                 var status = '<div class="w3-bar-item w3-quarter w3-right w3-border-left">' +
-                    '<img src=' + obj.statusIcon + '/>' +
+                    '<img src="' + obj.statusIcon + '"/>' +
                     '<br/>' + obj.status + '</div>';
                 contentString += assignee;
                 contentString += details;
