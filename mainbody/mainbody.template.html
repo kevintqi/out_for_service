@@ -1,0 +1,13 @@
+<div class="mainbody">
+  <div class="w3-right w3-animate-right" style="width:5%;right:0">
+    <div class="w3-sidebar w3-bar-block w3-small ">
+      <button class="w3-bar-item w3-button"><i class="material-icons"> list </i></button>
+      <button class="w3-bar-item w3-button" ng-click="toggleNewObj();"><i class="material-icons"> add_circle_outline </i></button>
+      <button class="w3-bar-item w3-button"><i class="material-icons"> settings </i></button>
+    </div>
+  </div>
+  <div style="width:95%">
+    <dashboard ng-class="dashboardWidth"></dashboard>
+    <newobj class="w3-quarter" ng-show="showNewObj"></newobj>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="newobj">
+  <form class="w3-container w3-small" ng-submit="$ctrl.save()">
+    <div class="w3-panel w3-white w3-card-4">
+      <h4> Contact </h4>
+      <p>
+        <input class="w3-input w3-light-grey" type="text" ng-model="$ctrl.object.contact.name" ng-required=true>
+        <label class="w3-text-blue"><b>Name</b></label>
+      </p>
+      <p>
+        <input class="w3-input w3-light-grey " type="text" ng-model="$ctrl.object.contact.phone">
+        <label class="w3-text-blue"><b>Phone Number</b></label>
+      </p>
+    </div>
+
+    <div class="w3-panel w3-white w3-card-4">
+      <h4> Andress </h4>
+      <p>
+        <input class="w3-input w3-light-grey" type="text" ng-model="$ctrl.object.address.street" ng-required=true>
+        <label class="w3-text-blue"><b>Street</b></label>
+      </p>
+
+      <p>
+        <input class="w3-input w3-light-grey" type="text" ng-model="$ctrl.object.address.city">
+        <label class="w3-text-blue"><b>City</b></label>
+      </p>
+
+      <p>
+        <input class="w3-input w3-light-grey" type="text" ng-model="$ctrl.object.address.zipcode">
+        <label class="w3-text-blue"><b>Zip Code</b></label>
+      </p>
+
+      <p>
+        <input class="w3-input w3-light-grey" type="text" ng-model="$ctrl.object.address.state">
+        <label class="w3-text-blue"><b>State</b></label>
+      </p>
+    </div>
+
+    <div class="w3-panel w3-white w3-card-4">
+      <h4> Schedule</h4>
+      <p>
+        <input class="w3-input w3-light-grey" type="text" ng-model="$ctrl.object.schedule.start">
+        <label class="w3-text-blue"><b>Start Time</b></label>
+      </p>
+      <p>
+        <input class="w3-input w3-light-grey" type="text" ng-model="$ctrl.object.schedule.repeat">
+        <label class="w3-text-blue"><b>Repeat</b></label>
+      </p>
+    </div>
+
+    <p> <button class="w3-button w3-blue">Save</button></p>
+  </form>
+</div>

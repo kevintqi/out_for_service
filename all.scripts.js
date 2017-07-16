@@ -4,5 +4,7 @@ document.write([
   '<script src="app.js"></script>',
   '<script src="dashboard/dashboard.component.js"></script>',
   '<script src="dashboard/dashboard.datasource.js"></script>',
-  '<script src="dashboard/dashboard.mapview.js"></script>'
+  '<script src="dashboard/dashboard.mapview.js"></script>',
+  '<script src="newobj/newobj.component.js"></script>',
+  '<script src="mainbody/mainbody.component.js"></script>'
 ].join('\n'));
