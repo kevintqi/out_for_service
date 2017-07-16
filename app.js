@@ -1,1 +1,1 @@
-angular.module('outForService', ['dashboard', 'newobj', 'mainbody']);
+angular.module('outForService', ['dashboard', 'newobj', 'settings', 'mainbody']);

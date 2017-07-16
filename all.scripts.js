@@ -6,5 +6,6 @@ document.write([
   '<script src="dashboard/dashboard.datasource.js"></script>',
   '<script src="dashboard/dashboard.mapview.js"></script>',
   '<script src="newobj/newobj.component.js"></script>',
+  '<script src="settings/settings.component.js"></script>',
   '<script src="mainbody/mainbody.component.js"></script>'
 ].join('\n'));

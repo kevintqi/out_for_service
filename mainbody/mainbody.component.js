@@ -3,15 +3,16 @@ mainbodyModule.component('mainbody', {
     templateUrl: 'mainbody/mainbody.template.html',
     controller: ['$scope',
         function MainbodyController($scope) {
-            $scope.showNewObj = false;
+            $scope.showView = 0;
             $scope.dashboardWidth = '';
 
-            $scope.toggleNewObj = function() {
-                $scope.showNewObj = !$scope.showNewObj;
-                if ($scope.showNewObj) {
-                    $scope.dashboardWidth = 'w3-threequarter';
+            $scope.toggleView = function(newView, dashboardWidth) {
+                if ($scope.showView != newView) {
+                    $scope.showView = newView;
+                    $scope.dashboardWidth = dashboardWidth;
                 }
                 else {
+                    $scope.showView = 0;
                     $scope.dashboardWidth = '';
                 }
             }

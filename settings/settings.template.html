@@ -1,0 +1,24 @@
+<div class="settings">
+  <form class="w3-container w3-small w3-padding-64" ng-submit="$ctrl.saveSettings()">
+    <div class="w3-panel w3-white w3-card-4">
+      <span ng-click="$ctrl.showLanguage=!$ctrl.showLanguage">
+        <h4> 
+        <i class="material-icons"ng-show="!$ctrl.showLanguage">expand_more</i> Language
+        </h4>
+        </span>
+      <div ng-show="$ctrl.showLanguage">
+        <p>
+          <input class="w3-radio" type="radio" value="en" ng-model="$ctrl.settings.language">
+          <label class="w3-text-blue"><b>English</b></label>
+        </p>
+        <p>
+          <input class="w3-radio" type="radio" value="es" ng-model="$ctrl.settings.language">
+          <label class="w3-text-blue"><b>Español</b></label>
+        </p>
+      </div>
+    </div>
+    <div class="w3-card-4">
+      <p> <button class="w3-button w3-blue w3-block">Save</button></p>
+    </div>
+  </form>
+</div>
