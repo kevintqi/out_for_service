@@ -1,11 +1,10 @@
 var newobjModule = angular.module('newobj', []);
 newobjModule.component('newobj', {
     templateUrl: 'newobj/newobj.template.html',
-    controller: ['$http', 'mainbody',
+    controller: ['$http',
         function NewobjController($http) {
             this.object = {};
-
-            this.save = function() {
+            this.saveObj = function() {
                 alert(JSON.stringify(this.object));
                 $http.post('model/newobj.json', this.object);
             }

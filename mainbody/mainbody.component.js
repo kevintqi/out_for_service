@@ -2,7 +2,7 @@ var mainbodyModule = angular.module('mainbody', []);
 mainbodyModule.component('mainbody', {
     templateUrl: 'mainbody/mainbody.template.html',
     controller: ['$scope',
-        function mainbodyController($scope) {
+        function MainbodyController($scope) {
             $scope.showNewObj = false;
             $scope.dashboardWidth = '';
 
