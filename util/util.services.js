@@ -1,4 +1,6 @@
-dashboardModule.factory('dataSource', function($http) {
+var utilModule = angular.module('util', []);
+
+utilModule.factory('dataSource', function($http) {
     return {
         getStatic: function() {
             return $http.get('model/static.json');

@@ -1,30 +1,5 @@
 <div class="dashboard">
-  <div class="w3-row w3-white w3-padding">
-    <div class="w3-quarter">
-      <div class="w3-bar">
-        <div class="w3-bar-item">
-          <img ng-src="{{$ctrl.company.logo}}" />
-        </div>
-      </div>
-    </div>
-    <div class="w3-half">
-      <input type="text" ng-model="$ctrl.query" ng-keyup="$ctrl.filter()" class="w3-button w3-border-0 w3-yellow w3-padding" />
-    </div>
-    <div class="w3-quarter">
-      <div class="w3-bar">
-        <div class="w3-bar-item w3-button w3-left">
-          <i class="material-icons"> search </i>
-        </div>
-        <div class="w3-bar-item w3-right">
-          <img ng-src="{{$ctrl.company.manager.icon}}" class="w3-circle" />
-        </div>
-      </div>
-    </div>
-
-  </div>
-
   <div id="map"></div>
-
   <div class="w3-center">
     <div class="w3-bar ">
       <button class="w3-bar-item w3-teal" ng-click="$ctrl.refresh()">

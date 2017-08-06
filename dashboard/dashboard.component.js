@@ -1,37 +1,43 @@
-var dashboardModule = angular.module('dashboard', []);
+var dashboardModule = angular.module('dashboard', ['util']);
 dashboardModule.component('dashboard', {
+    bindings :{
+        query:"="
+    },
     templateUrl: 'dashboard/dashboard.template.html',
-    controller: ['$filter', '$interval', 'dataSource', 'mapView',
-        function DashboardController($filter, $interval, dataSource, mapView) {
+    controller: ['$filter', '$interval', '$scope', 'dataSource', 'mapView',
+        function DashboardController($filter, $interval, $scope, dataSource, mapView) {
             this.company = {};
             this.messages = {};
             this.objects = [];
-            this.query = "";
             this.filteredObjects = [];
             var self = this;
 
             this.refresh = function() {
-                this.query = "";
+                self.query = "";
                 dataSource.getObjects().then(function(response) {
                     self.objects = response.data.objects;
                     self.filteredObjects = self.objects;
                     mapView.updateMarkers(self.filteredObjects, self.messages);
+                    $scope.$watch (
+                        function(){return self.query;},
+                        function() {self.filter();}
+                    );
                 });
             };
 
-            self.filter = function() {
-                this.filteredObjects = $filter('filter')(this.objects, this.query);
-                if (this.filteredObjects.length > 0) {
-                    mapView.updateMarkers(this.filteredObjects, this.messages);
+            this.filter = function() {
+                self.filteredObjects = $filter('filter')(self.objects, self.query);
+                if (self.filteredObjects.length > 0) {
+                    mapView.updateMarkers(self.filteredObjects, self.messages);
                 }
                 else {
-                    alert(this.messages.no_match + " '" + this.query + "'");
+                    alert(self.messages.no_match + " '" + self.query + "'");
                 }
             };
 
-            self.toggleMarkerType = function() {
+            this.toggleMarkerType = function() {
                 mapView.statusMarker = !mapView.statusMarker;
-                mapView.updateMarkers(this.filteredObjects, this.messages);
+                mapView.updateMarkers(self.filteredObjects, self.messages);
             }
 
             dataSource.getStatic().then(function(response) {

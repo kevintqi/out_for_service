@@ -1,19 +1,19 @@
 var mainbodyModule = angular.module('mainbody', []);
 mainbodyModule.component('mainbody', {
     templateUrl: 'mainbody/mainbody.template.html',
-    controller: ['$scope',
-        function MainbodyController($scope) {
-            $scope.showView = 0;
-            $scope.dashboardWidth = '';
+    controller: [function MainbodyController() {
+            this.showView = 0;
+            this.dashboardWidth = '';
+            var self = this;
 
-            $scope.toggleView = function(newView, dashboardWidth) {
-                if ($scope.showView != newView) {
-                    $scope.showView = newView;
-                    $scope.dashboardWidth = dashboardWidth;
+            this.toggleView = function(newView, dashboardWidth) {
+                if (self.showView != newView) {
+                    self.showView = newView;
+                    self.dashboardWidth = dashboardWidth;
                 }
                 else {
-                    $scope.showView = 0;
-                    $scope.dashboardWidth = '';
+                    self.showView = 0;
+                    self.dashboardWidth = '';
                 }
             }
         }

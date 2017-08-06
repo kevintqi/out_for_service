@@ -1,0 +1,16 @@
+<div class="listview">
+  <form class="w3-container w3-small" ng-submit="$ctrl.saveObj()">
+    <ul class="w3-ul w3-card-4n">
+      <li class="w3-padding-16 w3-hover-blue" ng-repeat="obj in $ctrl.objects | filter:$ctrl.query">
+        <span onclick="" class="w3-button w3-white w3-right" ng-show="true"><i class="material-icons">assignment_ind</i></span>
+        <span onclick="" class="w3-button w3-white w3-right" ng-show="true"><i class="material-icons">remove_circle</i></span>
+        <img src="{{obj.assignee.icon}}" class="w3-left w3-circle w3-margin-right" style="width:50px">
+        <span class="w3-large">{{obj.assignee.name}}</span><br>
+        <span>{{obj.location.address}}</span>
+      </li>
+    </ul>
+    <div class="w3-card-4">
+      <p> <button class="w3-button w3-blue w3-block">Commit</button></p>
+    </div>
+  </form>
+</div>
