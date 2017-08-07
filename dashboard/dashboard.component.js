@@ -40,10 +40,12 @@ dashboardModule.component('dashboard', {
                 mapView.updateMarkers(self.filteredObjects, self.messages);
             }
 
-            dataSource.getStatic().then(function(response) {
+            dataSource.getCompany().then(function(response) {
                 self.company = response.data.company;
-                self.messages = response.data.messages;
                 mapView.initMap(self.company);
+                dataSource.getMessages().then(function(response) {
+                    self.messages = response.data.messages;
+                });
                 self.refresh();
             });
             

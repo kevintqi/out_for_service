@@ -9,7 +9,7 @@ searchHeaderModule.component('searchHeader', {
             this.company = {};
             this.query = '';
             var self = this;
-            dataSource.getStatic().then(function(response) {
+            dataSource.getCompany().then(function(response) {
                 self.company = response.data.company;
             });
         }
