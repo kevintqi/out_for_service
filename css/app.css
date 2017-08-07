@@ -5,11 +5,11 @@ html, body {
     font-family: calibri, arial;
 }
 
-.searchheader img {
+.search-header img {
     height:46px;
 }
 
-.searchheader input {
+.search-header input {
     width:100%;
     height:46px;
 }

@@ -1,2 +1,2 @@
 angular.module('outForService', 
-               ['util','searchheader','dashboard', 'newobj', 'settings', 'listview', 'mainbody']);
+               ['util','searchHeader','dashboard', 'newObject', 'settings', 'listView', 'mainNavigation']);
