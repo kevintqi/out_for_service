@@ -1,0 +1,31 @@
+<div class="login w3-container">
+  <form class="w3-container" ng-submit="$ctrl.login()">
+    <div class="w3-panel w3-white w3-card-4" id="login-form">
+      <div class="w3-container w3-center">
+        <img src="{{$ctrl.userIcon}}" alt="Avatar" class="avatar w3-circle">
+      </div>
+
+      <div class="w3-container">
+        <p>
+          <label>
+            <b>Username</b>
+          </label>
+          <input class="w3-input w3-light-grey" type="text" placeholder="Enter Username" ng-model="$ctrl.user.email" ng-required="true">
+        </p>
+        <p>
+          <label>
+            <b>Password</b>
+          </label>
+          <input class="w3-input w3-light-grey" type="password" placeholder="Enter Password" ng-model="$ctrl.user.password" ng-required="true">
+        </p>
+        <p>
+          <button class="w3-button w3-blue w3-block" type="submit">Login</button>
+        </p>
+        <p>
+          <label>
+            <input type="checkbox" checked="checked" ng-model="$ctrl.rememberMe"> Remember me </label>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

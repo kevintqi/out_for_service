@@ -22,3 +22,18 @@ html, body {
 .control {
     height: 6%;
 }
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 180px;
+    border-radius: 50%;
+}
+
+#login-form {
+    width:100%
+}

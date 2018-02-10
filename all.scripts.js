@@ -9,5 +9,6 @@ document.write([
   '<script src="new-object/newObject.component.js"></script>',
   '<script src="settings/settings.component.js"></script>',
   '<script src="list-view/listView.component.js"></script>',
-  '<script src="main-navigation/mainNavigation.component.js"></script>'
+  '<script src="main-navigation/mainNavigation.component.js"></script>',
+  '<script src="login/login.component.js"></script>'
 ].join('\n'));
